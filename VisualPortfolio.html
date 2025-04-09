@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY PORTFOLIO</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #004080;
+            color: white;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: transparent;
+            padding: 20px 40px;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 180px;
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            padding: 15px 25px;
+        }
+
+        /* First nav - only Home colored */
+        .first-nav .home {
+            background-color: #00cc66;
+        }
+
+        /* Second nav - only Awards colored */
+        .second-nav .awards {
+            background-color: #00cc66;
+        }
+
+        /* Third nav - only Portfolio colored */
+        .third-nav .portfolio {
+            background-color: #00cc66;
+        }
+
+        .navbar a:hover {
+            background-color: #00cc66;
+            transform: scale(1.1);
+        }
+
+        .logo {
+            height: 100px;
+            position: absolute;
+            right: 40px; 
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 80px;
+            position: relative;
+        }
+
+        .content h2 {
+            color: #00cc66;
+            font-size: 2rem;
+        }
+
+        .bottom-line {
+            width: 90%;
+            height: 1px;
+            background-color: black;
+            border: none;
+            margin: 50px auto;
+        }
+
+        .cta {
+            position: absolute;
+            bottom: 5px;
+            left: 43%;
+            z-index: 1000;
+            margin-bottom: 2px;
+        }
+
+        .cta-button {
+            display: flex;
+            align-items: center;
+            background-color: #004080;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #00994d;
+            transform: scale(1.05);
+        }
+
+        .profile-pic {
+            height: 300px;
+            border-radius: 10px;
+        }
+
+        .awards {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .certificate {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .certificate img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px; 
+            padding: 20px;
+        }
+
+        .pagination {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.6;
+            cursor: pointer;
+        }
+
+        .active {
+            opacity: 1;
+            transform: scale(1.3);
+        }
+
+        .arrow {
+            font-size: 20px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .portfolio {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            gap: 30px;
+        }
+
+        .experience-container, .skills-container, .school-container {
+            display: flex;
+            align-items: center;
+            margin: 20px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 1200px;
+        }
+
+        .experience-label, .skills-label, .school-label {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            width: 150px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .experience-text, .skills-text, .school-text {
+            flex: 1;
+            padding: 0 20px;
+        }
+
+        .skills-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background-color: #003366;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .website-btn {
+            background-color: #00cc66;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .social a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.1rem;
+        }
+
+        .social a:hover {
+            color: #00cc66;
+        }
+
+        @media (max-width: 1200px) {
+            .navbar {
+                gap: 100px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .navbar {
+                gap: 60px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            
+            .profile-pic {
+                margin-top: 40px;
+            }
+            
+            .cta {
+                position: relative;
+                left: auto;
+                margin: 30px auto;
+            }
+            
+            .experience-container, .skills-container, .school-container {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 90%;
+            }
+            
+            .experience-label, .skills-label, .school-label {
+                margin-bottom: 15px;
+                margin-left: 0;
+                width: auto;
+            }
+            
+            .arrow {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0;
+            }
+            
+            .logo {
+                position: relative;
+                right: auto;
+                margin-top: 20px;
+            }
+            
+            .hero {
+                padding: 30px 15px;
+            }
+            
+            .certificate img {
+                width: 80%;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar a {
+                font-size: 1rem;
+                padding: 10px 15px;
+            }
+            
+            .content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .content h2 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-pic {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- First Navigation - Only Home colored -->
+    <header class="first-nav">
+        <nav class="navbar">
+            <a href="#home" class="home">Home</a>
+            <a href="#awards">Awards</a>
+            <a href="#portfolio">Portfolio</a>
+            <img src="picture/logo.png" alt="Logo" class="logo" />
+        </nav>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="content">
+            <h1>HI I'M</h1>
+            <h2>JOHN ARCELITO A. MAGDOZA</h2>
+            <p>CYBER SECURITY EXPERT</p>
+            <p>I'm a cybersecurity enthusiast with a <br> focus on ethical hacking and network <br> security, working to enhance digital <br> asset protection.</p>
+        </div>
+        <div class="cta">
+            <a href="#awards" class="cta-button">Get Started</a>
+        </div>
+        <img src="picture/pp2.png" alt="Profile Picture" class="profile-pic" />
+    </section>
+    
+    <hr class="bottom-line">
+    
+    <!-- Second Navigation - Only Awards colored -->
+    <header class="second-nav">
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#awards" class="awards">Awards</a>
+            <a href="#portfolio">Portfolio</a>
+            <img src="picture/logo.png" alt="Logo" class="logo" />
+        </nav>
+    </header>
+    
+    <section class="awards" id="awards">
+        <div class="certificate">
+            <img src="picture/awards.png" alt="Certificate" class="certificate-pic" />
+        </div>
+        <div class="pagination">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="arrow">→</span>
+        </div>
+    </section>
+    
+    <hr class="bottom-line">
+    
+    <!-- Third Navigation - Only Portfolio colored -->
+    <header class="third-nav">
+        <nav class="navbar">
+            <a href="#home">Home</a>
+            <a href="#awards">Awards</a>
+            <a href="#portfolio" class="portfolio">Portfolio</a>
+            <img src="picture/logo.png" alt="Logo" class="logo" />
+        </nav>
+    </header>
+    
+    <section class="portfolio" id="portfolio">
+        <div class="experience-container">
+            <div class="experience-label">EXPERIENCE</div>
+            <div class="arrow">➝</div>
+            <div class="experience-text">
+                As a cybersecurity student and fresh graduate, I gained hands-on experience in network security, ethical hacking, and incident response through academic projects, internships, and industry certification
+            </div>
+        </div>
+
+        <div class="skills-container">
+            <div class="skills-label">SKILLS</div>
+            <div class="arrow">➝</div>
+            <div class="skills-text">
+                <ul class="skills-list">
+                    <li>Network Security</li>
+                    <li>Cryptography</li>
+                    <li>Penetration Testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="school-container">
+            <div class="school-label">SCHOOL</div>
+            <div class="arrow">➝</div>
+            <div class="school-text">
+                BALOCAWEHAY NATIONAL HIGH SCHOOL
+            </div>
+        </div>
+        
+        <div class="school-container">
+            <div class="school-label">SCHOOL</div>
+            <div class="arrow">➝</div>
+            <div class="school-text">
+                OUR LADY OF FATIMA UNIVERSITY
+            </div>
+        </div>
+    </section>
+    
+    <hr class="bottom-line">
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <button class="website-btn">MyWebsite</button>
+            <div class="social">
+                <a href="https://facebook.com/" target="_blank" rel="noopener">
+                    <i class="fab fa-facebook"></i> John Magdoza
+                </a>
+            </div>
+            <div class="social">
+                <a href="https://instagram.com/" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i> @ragnar_wraith
+                </a>
+            </div>
+            <div class="social">
+                <a href="mailto:johnmagdoza159@gmail.com">
+                    <i class="fas fa-envelope"></i> johnmagdoza159@gmail.com
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
